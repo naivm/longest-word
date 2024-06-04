@@ -14,7 +14,9 @@ class Game:
     def __check_dictionary(word):
         response = requests.get(f"https://dictionary.lewagon.com/{word}")
         json_response = response.json()
-        return json_response['found'] == json_response['found']
+        dic_check = json_response['found']
+        return dic_check
+
 
     def is_valid(self, word: str) -> bool:
         if word is None:
