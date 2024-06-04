@@ -10,14 +10,6 @@ class Game:
         for _ in range(9):
             self.grid.append(random.choice(string.ascii_uppercase))
 
-    @staticmethod
-    def __check_dictionary(word):
-        response = requests.get(f"https://dictionary.lewagon.com/{word}")
-        json_response = response.json()
-        dic_check = json_response['found']
-        return dic_check
-
-
     def is_valid(self, word: str) -> bool:
         if word is None:
             return False
