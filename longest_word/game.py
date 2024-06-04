@@ -1,0 +1,20 @@
+# pylint: disable=missing-docstring
+# pylint: disable=too-few-public-methods
+import string
+import random
+
+class Game:
+    def __init__(self) -> list:
+        self.grid = []
+        for _ in range(9):
+            self.grid.append(random.choice(string.ascii_uppercase))
+
+    def is_valid(self, word: str) -> bool:
+        if word is None:
+            return False
+        if word == "":
+            return False
+        word_grid = list(word)
+
+        check = all(e in self.grid for e in word_grid)
+        return check
