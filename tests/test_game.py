@@ -18,17 +18,17 @@ class TestGame:
         new_game = Game()
         assert new_game.is_valid('') == False
 
-    def positive_grid_test(self):
+    def test_positive_grid_test(self):
         new_game = Game()
         grid = "WEIJWHCDX"
         word = "CHEW"
         new_game.grid = list(grid)
-        assert new_game.is_valid(word) is True
+        assert new_game.is_valid(word) == True
 
-    def negative_grid_test(self):
+    def test_negative_grid_test(self):
         new_game = Game()
-        grid = "WEIJWHCDX"
-        word = "GOLEM"
+        grid = "HELOWHCDX"
+        word = "PUZZLINGLY"
         new_game.grid = list(grid)
         assert new_game.is_valid(word) is False
 

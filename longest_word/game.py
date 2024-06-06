@@ -11,18 +11,17 @@ class Game:
             self.grid.append(random.choice(string.ascii_uppercase))
 
     def is_valid(self, word: str) -> bool:
+        word_grid = list(word)
+        new_list = len([letter for letter in word_grid if letter not in list(self.grid)])
+        #check = all(e in self.grid for e in word_grid)
         if word is None:
             return False
-        if word == "":
+        elif word == "":
             return False
-        word_grid = list(word)
-
-        check = all(e in self.grid for e in word_grid)
-        return self.__check_dictionary(word)
-
-
-    @staticmethod
-    def __check_dictionary(word):
         response = requests.get(f"https://dictionary.lewagon.com/{word}")
         json_response = response.json()
-        return json_response['found']
+        exists_dict = json_response['found']
+        if new_list == 0 and exists_dict == True:
+            return True
+        else:
+            return False
